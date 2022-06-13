@@ -1,24 +1,51 @@
 import random
+# r for rock, p for paper, s for scissors
+options = ["R", "P", "S"]
+print("Welcome to the Rock, Paper, Scissors game!")
+user = input("Enter your name: ")
 
-user_action = input("Enter a choice (rock, paper, scissors): ")
-possible_actions = ["rock", "paper", "scissors"]
-computer_action = random.choice(possible_actions)
-print(f"\nYou chose {user_action}, computer chose {computer_action}.\n")
+check = input("Enter yes to play or quit to end the game: ").lower()
 
-if user_action == computer_action:
-    print(f"Both players selected {user_action}. It's a tie!")
-elif user_action == "rock":
-    if computer_action == "scissors":
-        print("Rock smashes scissors! You win!")
+while check == "yes":
+    s = random.randint(0, 2)
+    UserData = input("Enter R for Rock, P for Paper, or S for Scissors: ")
+
+    if UserData not in options:
+        print("You didn't enter any of the options given")
+        check = input("Enter yes to play or quit to end the game: ").lower()
+
     else:
-        print("Paper covers rock! You lose.")
-elif user_action == "paper":
-    if computer_action == "rock":
-        print("Paper covers rock! You win!")
-    else:
-        print("Scissors cuts paper! You lose.")
-elif user_action == "scissors":
-    if computer_action == "paper":
-        print("Scissors cuts paper! You win!")
-    else:
-        print("Rock smashes scissors! You lose.")
+        print("computer picks {}".format(options[s].title()))
+        if options[s] == UserData.upper():
+            print("It's a tie")
+            check = input("Enter yes to keep playing or quit to end the game: ").lower()
+
+        elif options[s] == "R" and UserData.upper() == "S":
+            print("Computer wins!")
+            print("Rock smashes Scissors")
+            check = input("Enter yes to keep playing or quit to end the game: ").lower()
+
+        elif options[s] == "R" and UserData.upper() == "P":
+            print("You win!")
+            print("Paper covers Rock")
+            check = input("Enter yes to keep playing or quit to end the game: ").lower()
+
+        elif options[s] == "P" and UserData.upper() == "R":
+            print("Computer wins!")
+            print("Paper covers Rock")
+            check = input("Enter yes to keep playing or quit to end the game: ").lower()
+
+        elif options[s] == "P" and UserData.upper() == "S":
+            print("You win!")
+            print("Scissors cuts Paper")
+            check = input("Enter yes to keep playing or quit to end the game: ").lower()
+
+        elif options[s] == "S" and UserData.upper() == "R":
+            print("You win!")
+            print("Rock smashes Scissors")
+            check = input("Enter yes to keep playing or quit to end the game: ").lower()
+
+        elif options[s] == "S" and UserData.upper() == "P":
+            print("Computer wins!")
+            print("Scissors cuts Paper")
+            check = input("Enter yes to keep playing or quit to end the game: ").lower()
